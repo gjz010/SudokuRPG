@@ -26,11 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         sudokuwindow.cpp \
-    glmanager.cpp
+    glmanager.cpp \
+    scenes/scene.cpp \
+    simpleinputmanager.cpp
 
 HEADERS += \
         sudokuwindow.h \
-    glmanager.h
+    glmanager.h \
+    scenes/scene.h \
+    simpleinputmanager.h
 
 
 RESOURCES += \
