@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl
+QT       += core gui opengl multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,13 +28,27 @@ SOURCES += \
         sudokuwindow.cpp \
     glmanager.cpp \
     scenes/scene.cpp \
-    simpleinputmanager.cpp
+    simpleinputmanager.cpp \
+    scenes/scenemenu.cpp \
+    scenes/sceneingame.cpp \
+    scenes/sceneloading.cpp \
+    DancingLinkSolver.cpp \
+    SudokuSolver.cpp \
+    imwidgets.cpp \
+    scenes/shaderpacker.cpp
 
 HEADERS += \
         sudokuwindow.h \
     glmanager.h \
     scenes/scene.h \
-    simpleinputmanager.h
+    simpleinputmanager.h \
+    scenes/scenemenu.h \
+    scenes/sceneingame.h \
+    scenes/sceneloading.h \
+    scenes/shaderpacker.h \
+    DancingLinkSolver.h \
+    SudokuSolver.h \
+    imwidgets.h
 
 
 RESOURCES += \

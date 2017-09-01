@@ -26,12 +26,12 @@ void SimpleInputManager::onMouseUp(int x, int y)
     onMouseMove(x,y);
 }
 
-int SimpleInputManager::getX()
+int SimpleInputManager::getX() const
 {
     return x;
 }
 
-int SimpleInputManager::getY()
+int SimpleInputManager::getY() const
 {
     return y;
 }
@@ -50,12 +50,58 @@ bool SimpleInputManager::isTap()
 
 }
 
-int SimpleInputManager::getTapX()
+bool SimpleInputManager::checkTap() const
+{
+    return istap;
+}
+
+void SimpleInputManager::clearTap()
+{
+    istap=false;
+}
+
+float SimpleInputManager::getXPos() const
+{
+    return (float)x/width;
+}
+
+float SimpleInputManager::getYPos() const
+{
+    return (float)y/height;
+}
+
+float SimpleInputManager::getTapXPos() const
+{
+    return (float)tapx/width;
+}
+
+float SimpleInputManager::getTapYPos() const
+{
+    return (float)tapy/height;
+}
+
+void SimpleInputManager::setViewport(int w, int h)
+{
+    width=w;
+    height=h;
+}
+
+int SimpleInputManager::getViewWidth()
+{
+    return width;
+}
+
+int SimpleInputManager::getViewHeight()
+{
+    return height;
+}
+
+int SimpleInputManager::getTapX() const
 {
     return tapx;
 }
 
-int SimpleInputManager::getTapY()
+int SimpleInputManager::getTapY() const
 {
     return tapy;
 }

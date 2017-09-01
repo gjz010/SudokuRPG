@@ -1,11 +1,7 @@
 #include "scene.h"
 
-Scene::Scene(QObject *parent) : QObject(parent)
+Scene::Scene(GLManager *gl, SudokuWindow *parent) : QObject(parent)
 {
-
-}
-
-void Scene::render()
-{
-
+    this->gl=gl;
+    this->context=parent;
 }

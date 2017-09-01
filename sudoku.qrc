@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/shaders/test/shader.frag</file>
+        <file>assets/shaders/test/shader.vert</file>
+        <file>assets/shaders/default/shader.frag</file>
+        <file>assets/shaders/default/shader.vert</file>
+        <file>assets/images/huaji.png</file>
+        <file>assets/images/loading.png</file>
+        <file>assets/images/classic.png</file>
+        <file>assets/images/menu.png</file>
+        <file>assets/images/rpg.png</file>
+        <file>assets/images/ingame_gui.png</file>
+        <file>assets/images/bg.png</file>
+        <file>assets/sounds/click.wav</file>
+    </qresource>
+</RCC>

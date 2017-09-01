@@ -68,9 +68,33 @@ QMatrix4x4 GLManager::getMatrix() const
     return getProjMatrix()*getMVMatrix();
 }
 
+void GLManager::initStack()
+{
+    matrix_modelview=std::move(std::stack<QMatrix4x4,std::vector<QMatrix4x4> >());
+    matrix_modelview=std::move(std::stack<QMatrix4x4,std::vector<QMatrix4x4> >());
+    matrix_modelview.push(QMatrix4x4());
+    matrix_projection.push(QMatrix4x4());
+}
+
 QOpenGLTexture *GLManager::getTexture(int idx) const
 {
     return textures[idx];
+}
+
+QVector3D GLManager::unproject(float x, float y, float z)
+{
+    QVector3D vec(x,1.f-y,z);
+    return vec.unproject(getMVMatrix(),getProjMatrix(),QRect(0,0,1,1));
+}
+
+void GLManager::LoadSound(const QString &name)
+{
+    sound_mapping.insert(std::make_pair(name,new QSound(":/assets/sounds/"+name)));
+}
+
+QSound *GLManager::getSound(const QString &name) const
+{
+    return sound_mapping.at(name);
 }
 
 int GLManager::LoadTexture(const QString &name)
@@ -78,6 +102,22 @@ int GLManager::LoadTexture(const QString &name)
     int idx=textures.size();
     QOpenGLTexture* texture=new QOpenGLTexture(QImage(QString(":/assets/images/%1.png").arg(name)));
     textures.push_back(texture);
+    texture_mapping.insert(std::make_pair(name,idx));
+    texture->release();
     return idx;
+}
+
+QOpenGLTexture *GLManager::getTexture(const QString &name)
+{   int idx;
+    if(texture_mapping.find(name)==texture_mapping.end()){
+        idx=LoadTexture(name);
+        //return getTexture(); //Not recommended, may cause lag!
+
+    }else{
+        idx=texture_mapping.at(name);
+
+    }
+    //qDebug()<<idx;
+    return getTexture(idx);
 }
 

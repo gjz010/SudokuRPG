@@ -1,10 +1,15 @@
-attribute highp vec4 qt_Vertex;
-attribute highp vec4 qt_MultiTexCoord0;
-uniform highp mat4 qt_ModelViewProjectionMatrix;
-varying highp vec4 qt_TexCoord0;
-
+#version 320 es
+in highp vec3 vertAttr;
+in highp vec3 vertNormal;
+in highp vec2 texCoord;
+uniform highp mat4 matrix;
+out highp vec4 fragPosition;
+out highp vec4 fragNormal;
+out highp vec2 fragCoord;
 void main(void)
 {
-    gl_Position = qt_ModelViewProjectionMatrix * qt_Vertex;
-    qt_TexCoord0 = qt_MultiTexCoord0;
+    gl_Position = matrix * vec4(vertAttr,1);
+    fragPosition=matrix*vec4(vertAttr,1);
+    fragNormal=matrix*vec4(vertNormal,0);
+    fragCoord=texCoord;
 }
